@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { merge: Merge } = require('webpack-merge');
-const CommonConfig = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+const CommonConfig = require('./webpack.common');
 
 module.exports = Merge(CommonConfig, {
   output: {
@@ -17,9 +17,9 @@ module.exports = Merge(CommonConfig, {
     minimize: true,
     minimizer: [new TerserPlugin({
       terserOptions: {
-        keep_fnames: true
-      }
-    })]
+        keep_fnames: true,
+      },
+    })],
   },
   plugins: [
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['assets'], verbose: true }),

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { merge: Merge } = require('webpack-merge');
-const CommonConfig = require('./webpack.common.js');
 const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const webpack = require('webpack');
+const CommonConfig = require('./webpack.common');
 
 module.exports = Merge(CommonConfig, {
   output: {

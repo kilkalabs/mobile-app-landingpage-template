@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -20,9 +21,13 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin({
-      patterns:[
-        { from: path.resolve('_images'), to: 'images/', }
-      ]
+      patterns: [
+        { from: path.resolve('_images'), to: 'images/' },
+      ],
+    }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+      exclude: 'node_modules',
     }),
   ],
   module: {
@@ -47,7 +52,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 config: 'config/postcss.config.js',
-              }
+              },
             },
           },
           { loader: 'sass-loader' },
