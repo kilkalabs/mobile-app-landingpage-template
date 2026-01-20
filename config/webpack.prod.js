@@ -8,6 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CommonConfig = require('./webpack.common');
 
 module.exports = Merge(CommonConfig, {
+  mode: 'production',
   output: {
     filename: '[name]-[hash].bundle.js',
     path: path.resolve('assets'),
@@ -27,6 +28,6 @@ module.exports = Merge(CommonConfig, {
       minimize: true,
       debug: false,
     }),
-    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg|webp)$/i }),
   ],
 });

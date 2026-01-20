@@ -1,18 +1,57 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta name="description"
+  content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
 <meta name="theme-color" content="{{ site.theme_color }}">
 <meta name="msapplication-navbutton-color" content="{{ site.theme_color }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="{{ site.theme_color }}">
 <meta property="og:image" content="{{ site.url }}/{{ site.logo }}" />
 
+<!-- iOS Smart App Banner - shows native app install banner in Safari -->
+{% if site.data.app.app_store_id %}
+<meta name="apple-itunes-app" content="app-id={{ site.data.app.app_store_id }}">
+{% endif %}
+
 <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
-<link href="https://fonts.googleapis.com/css?family=Heebo:900" rel="stylesheet">
+
+<!-- Google Fonts with preconnect for faster loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap" rel="stylesheet">
 
 {% seo %}
+
+<!-- Structured Data for iOS App -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "{{ site.data.app.name }}",
+  "description": "{{ site.data.app.description }}",
+  "operatingSystem": "iOS",
+  "applicationCategory": "{{ site.data.app.category | default: 'UtilitiesApplication' }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ site.data.app.price | default: '0' }}",
+    "priceCurrency": "{{ site.data.app.currency | default: 'USD' }}"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ site.data.app.rating | default: '5.0' }}",
+    "ratingCount": "{{ site.data.app.rating_count | default: '1' }}"
+  },
+  "image": "{{ site.url }}/{{ site.logo }}",
+  "url": "{{ site.url }}",
+  "downloadUrl": "{{ site.data.app.iOS }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.author }}"
+  }
+}
+</script>
 
 {% if ((jekyll.environment == 'production' or jekyll.environment == 'pwa') and site.google_analytics) %}
 {% include google-analytics.html %}

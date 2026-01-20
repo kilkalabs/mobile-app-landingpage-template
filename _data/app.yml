@@ -8,11 +8,21 @@ full_description: 'A more complete description of the mobile app<br>
 android: https://telegra.ph/Replace-this-link-07-23
 iOS: https://telegra.ph/Replace-this-link-07-23
 web: https://telegra.ph/Replace-this-link-07-23
+
+# Optional: Structured data for SEO (used in JSON-LD schema)
+# category: UtilitiesApplication  # See: https://schema.org/MobileApplication
+# price: "0"                      # App price (use "0" for free apps)
+# currency: USD                   # Currency code
+# rating: "4.8"                   # App Store rating
+# rating_count: "125"             # Number of ratings
+
+# Optional: iOS Smart App Banner (shows native install banner in Safari)
+# app_store_id: "123456789"       # Your App Store ID (numbers only)
 screenshots:
-  - 1.png
-  - 2.png
-  - 3.png
-  - 4.png
+  - 1.webp
+  - 2.webp
+  - 3.webp
+  - 4.webp
 producthunt: https://telegra.ph/Replace-this-link-07-23
 companies:
   - url: https://telegra.ph/Replace-this-link-07-23

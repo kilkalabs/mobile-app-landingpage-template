@@ -53,8 +53,6 @@
   },
   "dependencies": {
     "@midzer/tobii": "^2.8.4",
-    "darkmode-js": "^1.5.7",
-    "normalize.css": "^8.0.1",
-    "producthunt-floating-prompt": "^1.0.8"
+    "normalize.css": "^8.0.1"
   }
 }

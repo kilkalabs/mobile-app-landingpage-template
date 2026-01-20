@@ -208,13 +208,15 @@ h1, h2 {
 
   &__screenshots-list {
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px 200px 200px;
-    grid-column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+    grid-gap: 20px;
     padding: 30px 0;
+    justify-content: center;
 
     @media (max-width: 768px) {
-      padding: 32px;
-      width: 800px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      padding: 16px;
+      grid-gap: 12px;
     }
   }
 
@@ -233,7 +235,8 @@ h1, h2 {
   }
 
   &__screenshots-wrapper {
-    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__buttons {
