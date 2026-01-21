@@ -4,12 +4,16 @@ import './index.scss';
 // Lazy-initialize Tobii lightbox on first interaction
 // This reduces initial JS execution time and improves TBT
 let tobiInstance = null;
+let isInitializing = false;
 
 const initTobii = async () => {
   if (tobiInstance) return tobiInstance;
+  if (isInitializing) return null;
 
+  isInitializing = true;
   const { default: Tobi } = await import('@midzer/tobii');
   tobiInstance = new Tobi();
+  isInitializing = false;
   return tobiInstance;
 };
 
@@ -22,10 +26,14 @@ document.querySelectorAll('.lightbox').forEach((element) => {
 // Ensure Tobii is ready when clicking a lightbox
 document.addEventListener('click', async (e) => {
   const lightbox = e.target.closest('.lightbox');
-  if (lightbox) {
+  if (lightbox && !tobiInstance) {
     e.preventDefault();
+    e.stopPropagation();
     await initTobii();
-    // Tobii auto-attaches to .lightbox elements, re-trigger click
-    lightbox.click();
+    // Manually open the lightbox with Tobii's API
+    const index = Array.from(document.querySelectorAll('.lightbox')).indexOf(lightbox);
+    if (tobiInstance && index !== -1) {
+      tobiInstance.open(index);
+    }
   }
-}, { once: true });
+});
