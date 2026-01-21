@@ -227,6 +227,7 @@ h1, h2 {
     transition: all .3s ease-in-out;
     transform: scale(1);
     cursor: pointer;
+    aspect-ratio: 9 / 19.5; // iPhone screenshot ratio, prevents CLS
 
     &:hover {
       box-shadow: 0 24px 48px rgba(17,16,62,0.12);

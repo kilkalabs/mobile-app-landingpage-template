@@ -22,6 +22,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap" rel="stylesheet">
 
+<!-- Preload LCP image for faster Largest Contentful Paint -->
+<link rel="preload" as="image" href="/assets/images/appicon.png" fetchpriority="high">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.data.app.name | default: site.title }}">
+<meta property="og:description" content="{{ site.data.app.description | default: site.description }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ site.data.app.name | default: site.title }}">
+<meta name="twitter:description" content="{{ site.data.app.description | default: site.description }}">
+<meta name="twitter:image" content="{{ site.url }}/{{ site.logo }}">
+{% if site.twitter.username %}
+<meta name="twitter:site" content="@{{ site.twitter.username }}">
+{% endif %}
+
 {% seo %}
 
 <!-- Structured Data for iOS App -->

@@ -14,6 +14,14 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: './icon.png',
       manifest: './config/manifest.json',
+      favicons: {
+        icons: {
+          // Disable excessive platform-specific icons for performance
+          appleStartup: false, // Removes ~50 apple-touch-startup-image tags (~7KB HTML)
+          yandex: false,
+          windows: false,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './_src/template/default.html',
