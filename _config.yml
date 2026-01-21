@@ -48,6 +48,10 @@ plugins:
   - octopress-minify-html
   - amp-jekyll
 
+# Include dotfiles/folders that Jekyll ignores by default
+include:
+  - .well-known
+
 ### Exclude from processing.
 exclude:
   - Gemfile

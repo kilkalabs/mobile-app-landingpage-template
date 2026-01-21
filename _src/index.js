@@ -12,7 +12,9 @@ const initTobii = async () => {
 
   isInitializing = true;
   const { default: Tobi } = await import('@midzer/tobii');
-  tobiInstance = new Tobi();
+  tobiInstance = new Tobi({
+    zoom: false
+  });
   isInitializing = false;
   return tobiInstance;
 };
